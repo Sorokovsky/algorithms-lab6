@@ -34,6 +34,9 @@ class CommandContext:
     def exit(self: "CommandContext") -> None:
         self._is_running = False
 
+    def get_database(self: "CommandContext") -> Database:
+        return self._database
+
     def _choose_operation(self: "CommandContext") -> "Command":
         try:
             command_id = int(input(">>> "))
