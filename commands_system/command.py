@@ -2,9 +2,13 @@ from abc import ABC, abstractmethod
 
 
 class Command(ABC):
-    @abstractmethod
+    _id: int
+
     def get_id(self: "Command") -> int:
-        pass
+        return self._id
+
+    def set_id(self: "Command", new_id: int) -> None:
+        self._id = new_id
 
     @abstractmethod
     def get_title(self: "Command") -> str:

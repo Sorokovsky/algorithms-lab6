@@ -3,6 +3,7 @@ from database import Database
 
 
 class CommandContext:
+    _current_id: int
     _database: Database
     _commands: list[Command]
     _title: str
@@ -13,12 +14,14 @@ class CommandContext:
         self._commands = []
         self._title = title
         self._is_running = False
+        self._current_id = 0
 
     def add_command(self: "CommandContext", command: Command) -> None:
         self._commands.append(command)
 
     def start(self: "CommandContext") -> None:
         self._is_running = True
+        self.setup()
         print(self._title)
         self._loop()
 
@@ -47,3 +50,9 @@ class CommandContext:
         except ValueError:
             print("Ви не вибрали жодну команду. Спробуйте ще.")
             return self._choose_operation()
+
+    def setup(self: "CommandContext") -> None:
+        for command in self._commands:
+            command.set_id(self._current_id)
+            self._current_id += 1
+        self._current_id = 0

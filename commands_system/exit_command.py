@@ -3,9 +3,6 @@ from commands_system.command_context import CommandContext
 
 
 class ExitCommand(Command):
-    def get_id(self: "Command") -> int:
-        return 0
-
     def get_title(self: "Command") -> str:
         return "Вихід"
 

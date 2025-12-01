@@ -3,9 +3,6 @@ from commands_system.command_context import CommandContext
 
 
 class AddCarCommand(Command):
-    def get_id(self: "AddCarCommand") -> int:
-        return 1
-
     def get_title(self: "AddCarCommand") -> str:
         return "Додати автомобіль"
 
